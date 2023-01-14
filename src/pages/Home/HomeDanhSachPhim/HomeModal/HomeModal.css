@@ -1,0 +1,25 @@
+.homemodal {
+    width: 720px !important;
+    top: -5% !important;
+}
+
+.homemodal .ant-modal-content {
+    padding: 0;
+
+}
+
+.homemodal .ant-modal-content .ant-modal-footer {
+    display: none;
+}
+
+.homemodal .ant-modal-content .ant-modal-close {
+    color: white;
+    top: -6%;
+    right: 0;
+
+}
+
+.homemodal .ant-modal-content .ant-modal-close .ant-modal-close-x {
+    font-size: 25px;
+
+}

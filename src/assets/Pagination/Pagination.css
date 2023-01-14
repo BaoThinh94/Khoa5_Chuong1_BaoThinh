@@ -1,0 +1,19 @@
+.pagination_button {
+    padding: 10px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+    
+}
+
+.pagination_button:hover {
+    background-color: #f0f0f0 ;
+}
+
+.pagination_button_active{
+    color: blue; 
+    border: 1px solid blue;
+}

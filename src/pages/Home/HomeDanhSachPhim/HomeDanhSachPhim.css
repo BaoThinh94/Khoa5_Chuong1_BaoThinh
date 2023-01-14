@@ -1,0 +1,18 @@
+.homedanhsachphim .slick-prev:before, .homedanhsachphim .slick-next:before {
+    color: black;
+    font-size: 30px;
+}
+
+.homedanhsachphim .slick-prev{
+    left: 0;
+}
+
+
+.homedanhsachphim .slick-next{
+    right: 0;
+}
+
+.homedanhsachphim .slick-slide{
+    display: flex !important;
+    justify-content: center;
+}

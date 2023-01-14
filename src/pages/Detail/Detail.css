@@ -1,0 +1,31 @@
+.detail {
+    /* background-image: url('http://movieapi.cyberlearn.vn/hinhanh/spy-x-family_gp01.jpg'); */
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.detail .detail_glassmorphism {
+    background: rgba(255, 255, 255, 0.4);
+    height: 100%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.detail .c100 {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.detail .c100:after{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.detail .c100 span{
+    color: #fff;
+}
+
+.detail .detail_glassmorphism .ant-tabs-tab{
+    padding: 0 12px;
+}

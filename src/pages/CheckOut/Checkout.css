@@ -1,0 +1,59 @@
+.checkout .ant-tabs-nav {
+    margin: 0;
+    padding: 5px 40px;
+}
+
+.checkout_right {
+    -webkit-box-shadow: -6px 3px 7px 1px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: -6px 3px 7px 1px rgba(0, 0, 0, 0.45);
+    box-shadow: -6px 3px 7px 1px rgba(0, 0, 0, 0.45);
+}
+
+.checkout_screen {
+    /* opacity: 1; */
+    /* border-bottom: 50px solid linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(5,5,5,1) 100%);
+	border-left: 45px solid transparent;
+	border-right: 45px solid transparent;
+	z-index: 3;
+	width: 100%; */
+    opacity: 0.3;
+    width: 100%;
+    height: 80px;
+    transform: perspective(20px) rotateX(2deg);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(5, 5, 5, 1) 100%);
+    border-top: 3px transparent;
+    border-bottom: 2px transparent;
+    border-right: 4px transparent;
+    border-left: 4px transparent;
+}
+
+.ghe {
+    width: 35px;
+    height: 35px;
+    font-size: 10px;
+}
+
+.checkout_thuong {
+    border: 1px solid green;
+}
+
+.checkout_vip {
+    border: 1px solid red;
+}
+
+.checkout_dadat {
+    background-color: gray;
+    cursor: default;
+    border: none;
+}
+
+.checkout_dangchon {
+    background-color: red;
+    border: none;
+}
+
+.checkout_banchon {
+    background-color: green;
+    border: none;
+}

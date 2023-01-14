@@ -1,0 +1,37 @@
+.dashboard .dashboard_table{
+    margin-top: 24px;
+    text-align: left;
+}
+
+.dashboard .dashboard_table .dashboard_table_title{
+    background-color: #f0f0f0;
+}
+
+.dashboard .dashboard_table .dashboard_table_item{
+   
+    transition: all .5s;
+}
+
+.dashboard .dashboard_table .dashboard_table_item:hover{
+    background-color: #f0f0f0;
+
+}
+
+.dashboard .dashboard_table tr th,
+.dashboard .dashboard_table tr td {
+    border-right: 1px solid #f0f0f0f8;
+    padding: 20px 10px;
+}
+
+.dashboard .dashboard_table tr th:last-of-type,
+.dashboard .dashboard_table tr td:last-of-type{
+    border: none;
+}
+
+.dashboard_button{
+    font-size: 20px;
+    margin-right: 10px;
+    transition: all .5s;
+    cursor: pointer;
+}
+
