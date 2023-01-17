@@ -11,7 +11,7 @@ export default function Header() {
 
     const userlog = JSON.parse(localStorage.getItem(USER_LOG))
     const displayAdmin = userlog?.maLoaiNguoiDung == "QuanTri" ? '' : 'hidden'
-    console.log(displayAdmin)
+   
     const items = [
         {
             key: '1',
@@ -79,23 +79,6 @@ export default function Header() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
-                {/* <div className='lg:hidden pos'>
-                    <ul className="items-stretch  flex space-x-3 lg:hidden">
-                        <li className="flex">
-                            <NavLink rel="noopener noreferrer" to='/home' activeClassName=' dark:text-violet-400 dark:border-violet-400' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Home</NavLink>
-                        </li>
-                        <li className="flex">
-                            <NavLink rel="noopener noreferrer" to='/contact' activeClassName=' dark:text-violet-400 dark:border-violet-400' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">Contact</NavLink>
-                        </li>
-                        <li className="flex">
-                            <NavLink rel="noopener noreferrer" to='/news' activeClassName=' dark:text-violet-400 dark:border-violet-400' className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent">News</NavLink>
-                        </li>
-                    </ul>
-                    <div className="items-center flex-shrink-0 flex  lg:hidden">
-                        <button className="self-center px-8 py-3 rounded">Sign in</button>
-                        <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Sign up</button>
-                    </div>
-                </div> */}
             </div>
         </header >
     )
