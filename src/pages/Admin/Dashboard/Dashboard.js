@@ -24,7 +24,7 @@ export default function Dashboard(props) {
 
   const onSearch = (e) => {
 
-    console.log(text.current)
+   
     if (text.current != null ){
       clearTimeout(text.current)
     }

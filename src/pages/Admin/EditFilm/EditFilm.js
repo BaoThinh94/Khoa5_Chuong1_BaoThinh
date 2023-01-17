@@ -70,17 +70,17 @@ export default function EditFilm(props) {
     }),
 
     onSubmit: values => {
+      
       let formdata = new FormData();
       for (let key in values) {
         if (key !== "hinhAnh") {
           formdata.append(key, values[key]);
         } else {
           if (values.hinhAnh !== null) {
-            formdata.append('File', values.hinhAnh, values.hinhAnh.name);
+            formdata.append('File', values.hinhAnh, values.hinhAnh.name);   
           }
         }
       }
-
       dispatch(capNhatPhimUpload(formdata))
     },
   });

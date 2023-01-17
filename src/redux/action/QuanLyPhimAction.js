@@ -19,10 +19,8 @@ export const actionLayDanhSachPhim = (tenPhim) => {
                     type: ADD_TO_LAYDANHSACHPHIM_REDUCER,
                     list: data.content
                 }
-
                 dispatch(action);
             }
-
         } catch (error) {
             openNotificationWithIcon('error', error.response.data.content)
         }
@@ -65,7 +63,7 @@ export const themPhimUploadHinhAction = (phim) => {
 
             if (status == STATUS_CODE.SUCCESS) {
                 openNotificationWithIcon('success', data.message)
-                
+                history.push("/admin")
             }
         } catch (error) {
             openNotificationWithIcon('error', error.response.data.content)
@@ -86,7 +84,7 @@ export const xoaPhim = (maPhim) => {
 
             if (status == STATUS_CODE.SUCCESS) {
                 openNotificationWithIcon('success', data.message)
-                dispatch(actionLayDanhSachPhim())
+                dispatch(actionLayDanhSachPhim(''))
             }
         } catch (error) {
             openNotificationWithIcon('error', error.response.data.content)
@@ -105,7 +103,7 @@ export const layThongTinPhimAction = (maPhim) => {
             if (status == STATUS_CODE.SUCCESS) {
                 dispatch({
                     type: ADD_TO_LAYTHONGTINPHIM_REDUCER,
-                    phim:data.content
+                    phim: data.content
                 })
             }
         } catch (error) {
@@ -118,15 +116,18 @@ export const layThongTinPhimAction = (maPhim) => {
 export const capNhatPhimUpload = (phim) => {
     return async (dispatch) => {
 
+
         try {
             const { data, status } = await quanLyPhimService.capNhatPhimUpload(phim)
-          ``
+
             if (status == STATUS_CODE.SUCCESS) {
                 history.push('/admin')
                 openNotificationWithIcon('success', data.message)
+                localStorage.removeItem("film");
             }
         } catch (error) {
             openNotificationWithIcon('error', error.response.data.content)
+        
         }
 
     }

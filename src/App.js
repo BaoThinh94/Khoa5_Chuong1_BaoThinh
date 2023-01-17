@@ -28,6 +28,12 @@ import Dashboard from './pages/Admin/Dashboard/Dashboard';
 import AddFilm from './pages/Admin/AddFilm/AddFilm';
 import EditFilm from './pages/Admin/EditFilm/EditFilm';
 import ShowTime from './pages/Admin/ShowTime/ShowTime.';
+import Usermanagerment from './pages/Admin/UserManagerment/Usermanagerment';
+import EditUser from './pages/Admin/UserManagerment/EditUser/EditUser';
+import AddUser from './pages/Admin/UserManagerment/AddUser/AddUser';
+import UserInfor from './templates/UserInforTemplate/UserInfor/UserInfor';
+import { UserInforTemplate } from './templates/UserInforTemplate/UserInforTemplate';
+import DatVeInfor from './templates/UserInforTemplate/DatVeInfor/DatVeInfor';
 
 
 
@@ -47,11 +53,16 @@ function App() {
         <HomeTemplates path="/news" exact Component={News} />
         <Route path="/login" exact component={Login} />
         <Route path="/register" exact component={Register} />
+        <UserInforTemplate  path = "/userInfor/profile" exact Component = {UserInfor}/>
+        <UserInforTemplate  path = "/userInfor/historycheckout" exact Component = {DatVeInfor}/>
         <CheckOutTemplate path="/checkout/:id" exact Component={CheckOut} />
         <AdminTemplate path = "/admin" exact Component = {Dashboard}/>
         <AdminTemplate path = "/admin/addfilm" exact Component = {AddFilm}/>
         <AdminTemplate path = "/admin/editfilm/:id" exact Component = {EditFilm}/>
         <AdminTemplate path = "/admin/showtime/:id" exact Component = {ShowTime}/>
+        <AdminTemplate path = "/admin/usermanager" exact Component = {Usermanagerment}/>
+        <AdminTemplate path = "/admin/usermanager/edituser/:id" exact Component = {EditUser}/>
+        <AdminTemplate path = "/admin/usermanager/adduser/" exact Component = {AddUser}/>
       </Switch>
       
       </Router>

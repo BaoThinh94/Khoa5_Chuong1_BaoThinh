@@ -1,28 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Button,
-    Cascader,
     DatePicker,
     Form,
     Input,
     InputNumber,
-    Radio,
-    Select,
     Switch,
-    TreeSelect,
-    Upload,
+
 } from 'antd';
 
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import {  themPhimUploadHinhAction } from '../../../redux/action/QuanLyPhimAction';
 import * as Yup from 'yup';
+import { SET_DEFAULT_KEY } from '../../../redux/types/AdminTemplateType';
 
 export default function AddFilm() {
     const dispatch = useDispatch();
     const [componentSize, setComponentSize] = useState('default');
     const [img, setImg] = useState('')
     const display = img !== '' ? '' : 'hidden'
+
+
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
     };
@@ -52,7 +51,7 @@ export default function AddFilm() {
         }),
 
         onSubmit: values => {
-            console.log(typeof(values.danhGia))
+           
             if (values.hinhAnh == null){
                 alert("Phim chưa có ảnh") 
             }

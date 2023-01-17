@@ -6,30 +6,35 @@ import { Dropdown, Layout, Menu, theme } from 'antd';
 import { USER_LOG } from "../../util/settings/config";
 const { Header, Content, Footer, Sider } = Layout
 
-const items = [
-    {
-        key: '1',
-        label: (
-            <NavLink to="/userInfor/profile" className=''  >
-                Thông Tin Cá Nhân
-            </NavLink>
-        ),
-    },
-    {
-        key: '2',
-        label: (
-            <NavLink to="/home" onClick={() => {
-                localStorage.clear()
-            }}>
-                Đăng Xuất
-            </NavLink>
-        ),
-    },
-];
+
 
 const NavTop = (props) => {
     const { userLog } = useSelector(state => state.QuanLyNguoiDungReducer)
-    return <div className='hover:text-violet-400 flex justify-end items-center cursor-pointer'>Chào {userLog.hoTen} <img className='ml-3 rounded-full' src='https://picsum.photos/50/50' alt="123" /> <Dropdown
+    const displayAdmin = userLog?.maLoaiNguoiDung == "QuanTri" ? '' : 'hidden'
+    const items = [
+        {
+            key: '1',
+            label: (
+                <NavLink className={`${displayAdmin} `} to="/admin">
+                    Trang Admin
+                </NavLink>
+            ),
+        },
+        {
+            key: '2',
+            label: (
+                <NavLink to="/home" onClick={() => {
+                    localStorage.clear()
+                }}>
+                    Đăng Xuất
+                </NavLink>
+            ),
+        },
+    ];
+
+
+    return <div className='hover:text-violet-400 flex ml-10 justify-end items-center cursor-pointer'>Chào {userLog.hoTen} <img className='ml-3 rounded-full' src='https://picsum.photos/50/50' alt="123" />
+    <Dropdown
     menu={{
         items,
     }}
@@ -41,24 +46,13 @@ const NavTop = (props) => {
 }
 
 
-export const AdminTemplate = (props) => {
+export const UserInforTemplate = (props) => {
 
 
     const {
         token: { colorBgContainer },
     } = theme.useToken();
 
-    const userLog = JSON.parse(localStorage.getItem(USER_LOG))
-
-  
-
-    if (userLog?.maLoaiNguoiDung !== "QuanTri" || userLog === 'undefined') {
-        alert("Bạn không có quyền truy cập trang này")
-        return <Redirect
-            to={{
-                pathname: '/home'
-            }} />
-    }
 
     const { Component, ...restprops } = props
     return < Route  {...restprops} render={(propsRoute) => {
@@ -77,23 +71,13 @@ export const AdminTemplate = (props) => {
 
                         items={[{
                             key: String(1),
-                            icon: React.createElement(VideoCameraOutlined),
-                            label: <NavLink to="/admin" >Film Manager</NavLink>,
+                            icon: React.createElement(UserOutlined),
+                            label: <NavLink to="/userinfor/profile" >Thông tin cá nhân</NavLink>,
                         },{
                             key: String(2),
-                            icon: React.createElement(UploadOutlined),
-                            label: <NavLink to="/admin/addfilm">Add Film</NavLink>,
+                            icon: React.createElement(VideoCameraOutlined),
+                            label: <NavLink to="/userinfor/historycheckout">Lịch Sử Đặt vé</NavLink>,
                         },
-                        {
-                            key: String(3),
-                            icon: React.createElement(UserOutlined),
-                            label: <NavLink to="/admin/usermanager">User Manager</NavLink>,
-                        },
-                        {
-                            key: String(4),
-                            icon: React.createElement(UserAddOutlined),
-                            label: <NavLink to="/admin/usermanager/adduser/">Add User</NavLink>,
-                        }
                         ]
                         }
                     />

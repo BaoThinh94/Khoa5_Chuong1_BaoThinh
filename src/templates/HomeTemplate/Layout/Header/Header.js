@@ -4,11 +4,44 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { openNotificationWithIcon } from '../../../../util/settings/Notifycation/Notifycation'
 import { TOKEN, USER_LOG } from '../../../../util/settings/config'
-
+import { Button, Dropdown } from 'antd'
+import { DownOutlined,CaretDownOutlined } from '@ant-design/icons';
 
 export default function Header() {
 
     const userlog = JSON.parse(localStorage.getItem(USER_LOG))
+    const displayAdmin = userlog?.maLoaiNguoiDung == "QuanTri" ? '' : 'hidden'
+    console.log(displayAdmin)
+    const items = [
+        {
+            key: '1',
+            label: (
+                <NavLink to="/userInfor/profile" className=''  >
+                    Thông Tin Cá Nhân
+                </NavLink>
+            ),
+        },
+        {
+            key: '2',
+            label: (
+                <NavLink className={`${displayAdmin} `} to="/admin">
+                    Trang Admin
+                </NavLink>
+            ),
+        },
+        {
+            key: '3',
+            label: (
+                <NavLink to="/home" onClick={() => {
+                    localStorage.clear()
+                }}>
+                    Đăng Xuất
+                </NavLink>
+            ),
+        },
+    ];
+
+
     return (
         <header className="p-2 dark:bg-gray-800/75 dark:text-gray-100 fixed w-full z-10">
             <div className="container flex justify-between h-16 mx-auto">
@@ -27,9 +60,17 @@ export default function Header() {
                     </li>
                 </ul>
                 <div className="items-center flex-shrink-0 hidden lg:flex">
-                    { localStorage.getItem(TOKEN) ? <div className='hover:text-violet-400 flex justify-center items-center cursor-pointer'>Chào {userlog.hoTen} <img className='ml-3 rounded-full' src='https://picsum.photos/50/50'/></div> : <div><NavLink to={"/login"}><button className="self-center px-8 py-3 rounded">Sign in</button></NavLink>
-                        <NavLink to={"/register"}className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Sign up</NavLink></div> }
-                    
+                    {localStorage.getItem(TOKEN) ? <div className='hover:text-violet-400 flex justify-center items-center cursor-pointer'>Chào {userlog.hoTen} <img className='ml-3 rounded-full' src='https://picsum.photos/50/50' alt="123" /> <Dropdown
+                        menu={{
+                            items,
+                        }}
+                        placement="bottom"
+                        arrow
+                    >
+                        <CaretDownOutlined className='ml-2 text-2xl font-bold'/>
+                    </Dropdown></div> : <div><NavLink to={"/login"}><button className="self-center px-8 py-3 rounded">Sign in</button></NavLink>
+                        <NavLink to={"/register"} className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Sign up</NavLink></div>}
+
                 </div>
 
 

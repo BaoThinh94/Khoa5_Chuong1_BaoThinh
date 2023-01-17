@@ -1,4 +1,5 @@
 import { CalendarOutlined, DeleteOutlined, EditOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons'
+import { stringify } from 'postcss'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
@@ -19,7 +20,9 @@ export default function Table(props) {
                 <td className='flex justify-center items-center'><img style={{ height: '70px', width: '50px' }} src={item.hinhAnh} alt='123'></img></td>
                 <td>{item.tenPhim}</td>
                 <td>{(item.moTa)?.length > 100 ? item.moTa.slice(0, 100) + ' ...' : item.moTa} </td>
-                <td> <NavLink to = {`/admin/editfilm/${item.maPhim}`} onClick = {() => {}}><EditOutlined className='dashboard_button hover:font-bold text-blue-400 hover:text-blue-700'/></NavLink> <DeleteOutlined onClick={() => {dispatch(xoaPhim(item.maPhim))}} className='dashboard_button hover:font-bold text-red-400 hover:text-red-700' /> <NavLink to = {`/admin/showtime/${item.maPhim}`} onClick = {() => {}}><CalendarOutlined className='dashboard_button hover:font-bold text-blue-400 hover:text-blue-700'/></NavLink></td>
+                <td> <NavLink to = {`/admin/editfilm/${item.maPhim}`} ><EditOutlined className='dashboard_button hover:font-bold text-blue-400 hover:text-blue-700'/></NavLink> <DeleteOutlined onClick={() => {dispatch(xoaPhim(item.maPhim))}} className='dashboard_button hover:font-bold text-red-400 hover:text-red-700' /> <NavLink to = {`/admin/showtime/${item.maPhim}`} onClick = {() => {}}><CalendarOutlined onClick = {() => {
+                    localStorage.setItem("film", JSON.stringify(item))
+                }} className='dashboard_button hover:font-bold text-blue-400 hover:text-blue-700'/></NavLink></td>
             </tr>
         })
     }

@@ -7,6 +7,7 @@ import { QuanLyNguoiDungReducer } from './reducers/QuanLyNguoiDungReducer'
 import { LoadingReducer } from './reducers/LoadingReducer'
 import { QuanLyDatVeReducer } from './reducers/QuanLyDatVeReducer'
 import { ModalConfirmReducer } from './reducers/ModalConfirmReducer'
+import { AdminTemplateReducer } from './reducers/AdminTemplateReducer'
 const rootReducer = combineReducers({
     QuanLyPhimReducer,
     QuanLyRapReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     QuanLyNguoiDungReducer,
     LoadingReducer,
     QuanLyDatVeReducer,
-    ModalConfirmReducer
+    ModalConfirmReducer,
+    AdminTemplateReducer
   
 
 })

@@ -20,7 +20,8 @@ import { taoLichChieuAction } from '../../../redux/action/QuanLyDatVeAction';
 
 export default function ShowTime(props) {
     const dispatch = useDispatch();
-
+    const film = JSON.parse(localStorage.getItem("film"));
+    console.log(film)
     const formik = useFormik({
         initialValues: {
             maPhim: props.match.params.id,
@@ -29,13 +30,13 @@ export default function ShowTime(props) {
             giaVe: ''
 
         },
-        
+
         validationSchema: Yup.object().shape({
 
             maRap: Yup.string().required('Required'),
             ngayChieuGioChieu: Yup.string().required('Required'),
             giaVe: Yup.string().required('Required'),
-           
+
         }),
 
 
@@ -46,7 +47,7 @@ export default function ShowTime(props) {
     });
 
     const [componentSize, setComponentSize] = useState('default');
-    
+
     const { layThongTinHeThongRapReducer, layThongTinCumRapTheoHeThongReducer } = useSelector(state => state.QuanLyRapReducer)
     const listHeThongRap = layThongTinHeThongRapReducer?.map((item, index) => {
         return {
@@ -87,6 +88,9 @@ export default function ShowTime(props) {
     return (
         <div>
             <h1 className='text-2xl font-bold mb-6'>Tạo lịch chiếu</h1>
+            <div className='pl-48 mb-5'>
+                <div><img style={{ width: 200 }} src={film.hinhAnh} alt={film.hinhAnh} /></div>
+            </div>
             <Form
                 onSubmitCapture={formik.handleSubmit}
                 labelCol={{
@@ -103,6 +107,9 @@ export default function ShowTime(props) {
                 size={componentSize}
             >
 
+                <Form.Item label="Tên Phim">
+                    <h2 className='text-xl font-bold'>{film.tenPhim}</h2>
+                </Form.Item>
                 <Form.Item label="Hệ thống rạp">
                     <Select style={{
                         width: 200,
@@ -140,7 +147,7 @@ export default function ShowTime(props) {
                     {formik.touched.ngayChieuGioChieu && formik.errors.ngayChieuGioChieu && <div className='text-red-500'>{formik.errors.ngayChieuGioChieu}</div>}
                 </Form.Item>
                 <Form.Item label="giá vé">
-                    <InputNumber onChange={(value, e) => { formik.setFieldValue("giaVe", value) }}  min={75000} max={150000} />
+                    <InputNumber onChange={(value, e) => { formik.setFieldValue("giaVe", value) }} min={75000} max={150000} />
                     {formik.touched.giaVe && formik.errors.giaVe && <div className='text-red-500'>{formik.errors.giaVe}</div>}
                 </Form.Item>
                 <Form.Item label="Button">
